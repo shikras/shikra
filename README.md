@@ -5,6 +5,7 @@
   <p align="center">
     <a href='https://github.com/shikras/shikra'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
     <a href='#'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+    <a href='#'><img src='https://img.shields.io/github/license/shikras/shikra'></a>
   </p>
 </p>
 
