@@ -4,7 +4,7 @@
   <h4 align="center"><font color="#966661">Shikra</font>: Unleashing Multimodal LLM’s Referential Dialogue Magic</h4>
   <p align="center">
     <a href='https://github.com/shikras/shikra'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
-    <a href='#'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+    <a href='http://arxiv.org/abs/2306.15195'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
     <a href='#'><img src='https://img.shields.io/github/license/shikras/shikra'></a>
   </p>
 </p>
