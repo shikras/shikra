@@ -5,7 +5,6 @@
   <p align="center">
     <a href='https://github.com/shikras/shikra'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
     <a href='http://arxiv.org/abs/2306.15195'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
-    <a href='#'><img src='https://img.shields.io/github/license/shikras/shikra'></a>
   </p>
 </p>
 
@@ -107,9 +106,22 @@ accelerate launch --num_processes 4 \
 
 where `--cfg-options a=balabala b=balabala` is mmengine style argument. They will overwrite the argument predefined in config file. And `--per_device_eval_batch_size` is huggingface:Trainer argument.
 
+the prediction result will be saved in `output_dir/multitest_xxxx_extra_prediction.jsonl`, which hold the same order as the input dataset. 
+
 ## Examples
 
 <img src="./assets/shikra_case_1.jpg" alt="shikra_case_1" style="zoom: 25%;" />
+
+## Cite
+
+```bibtex
+@article{chen2023shikra,
+  title={Shikra: Unleashing Multimodal LLM's Referential Dialogue Magic},
+  author={Chen, Keqin and Zhang, Zhao and Zeng, Weili and Zhang, Richong and Zhu, Feng and Zhao, Rui},
+  journal={arXiv preprint arXiv:2306.15195},
+  year={2023}
+}
+```
 
 ## Acknowledgement
 
