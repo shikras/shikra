@@ -1,0 +1,17 @@
+torch
+torchvision
+transformers @ git+https://github.com/huggingface/transformers@cae78c46
+datasets
+pillow
+dataclasses
+numpy
+nltk
+pandas
+mmengine
+tensorboard
+einops
+tqdm
+matplotlib
+
+accelerate
+SentencePiece
