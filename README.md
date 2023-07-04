@@ -45,7 +45,7 @@ We release Shikra weights as delta weights to comply with the LLaMA model licens
 
 Instructions:
 
-1. Get the original LLaMA weights in the huggingface format by following the instructions [here](https://huggingface.co/docs/transformers/main/model_doc/llama).
+1. Get the original LLaMA weights in the Hugging Face format by following the instructions [here](https://huggingface.co/docs/transformers/main/model_doc/llama).
 2. Use the following scripts to get weights by applying our delta ([shikra-7b-delta](https://huggingface.co/shikras/shikra-7b-delta-v1)). It will automatically download delta weights from our Hugging Face account.
 
 ```shell
