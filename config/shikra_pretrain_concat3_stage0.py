@@ -1,4 +1,4 @@
-_base_ = ['_base_/dataset/mix_pretrain_final19.py', '_base_/model/shikra.py', '_base_/train/shikra_fsdp.py']
+_base_ = ['_base_/dataset/mix_pretrain_concat3.py', '_base_/model/shikra.py', '_base_/train/shikra_fsdp.py']
 
 training_args = dict(
     num_train_epochs=1,
