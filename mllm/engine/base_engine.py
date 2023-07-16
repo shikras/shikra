@@ -152,32 +152,6 @@ class TrainerForMMLLM(TrainerDifferentCollatorMixin, Seq2SeqTrainer):
             self._generate_kwargs = keys
             logger.warning(f"generate use kwargs: {keys}")
 
-    def _prepare_input(self, data: Union[torch.Tensor, Any]) -> Union[torch.Tensor, Any]:
-        """
-        Prepares one `data` before feeding it to the model, be it a tensor or a nested list/dictionary of tensors.
-        """
-        if isinstance(data, Mapping):
-            # noinspection PyArgumentList
-            return type(data)({k: self._prepare_input(v) for k, v in data.items()})
-        elif isinstance(data, (tuple, list)):
-            return type(data)(self._prepare_input(v) for v in data)
-        elif isinstance(data, torch.Tensor):
-            kwargs = {"device": self.args.device}
-            if self.deepspeed and (torch.is_floating_point(data) or torch.is_complex(data)):
-                # NLP models inputs are int/uint and those get adjusted to the right dtype of the
-                # embedding. Other models such as wav2vec2's inputs are already float and thus
-                # may need special handling to match the dtypes of the model
-                kwargs.update({"dtype": self.args.hf_deepspeed_config.dtype()})
-            # vision input may contain float data and should be adjusted to match the dtypes
-            # of the model while eval.
-            elif (not self.is_in_train) and self.args.fp16_full_eval and (torch.is_floating_point(data) or torch.is_complex(data)):
-                kwargs.update({"dtype": torch.float16})
-            elif (not self.is_in_train) and self.args.bf16_full_eval and (torch.is_floating_point(data) or torch.is_complex(data)):
-                kwargs.update({"dtype": torch.bfloat16})
-
-            return data.to(**kwargs)
-        return data
-
     def save_prediction(self, predict_results, file_key_prefix='predict'):
         if not self.is_world_process_zero():
             return
