@@ -37,7 +37,7 @@ class SingleImageConvDatasetMixin:
         self.training_args = training_args
         self.transforms = transforms
 
-    def __getitem__(self, index, debug_mode=False) -> Dict[str, Any]:
+    def __getitem__(self, index, debug_mode=False, return_conv=False) -> Dict[str, Any]:
         # getitem
         item = self.get_raw_item(index)
         image: Image.Image = item.get('image', None)
@@ -62,7 +62,9 @@ class SingleImageConvDatasetMixin:
             self.validate_raw_item(item)  # only validate for single image.
             if self.transforms is not None and image is not None:
                 image, target = self.transforms(image, target)
-            if target is not None:
+            has_image = 'image' in item and bool(item['image'])
+            has_target = 'target' in item and bool(item['target']) and any(bool(elem) for elem in item['target'].values())
+            if has_target and has_image:
                 target['width'], target['height'] = image.width, image.height
 
         # preprocess
@@ -70,6 +72,9 @@ class SingleImageConvDatasetMixin:
         raw_conv, image = self.process_conv_multimage(raw_conv, image)
         raw_conv, _ = self.process_target(raw_conv, target, multimage_mode=multimage_mode)
         conv = self.build_conv(raw_conv)
+        if return_conv:
+            # noinspection PyTypeChecker
+            return conv
         text_dict = self.process_text(conv)
         image_dict = self.process_image(image)
 
@@ -136,8 +141,8 @@ class SingleImageConvDatasetMixin:
 
     # noinspection PyMethodMayBeStatic
     def validate_raw_item(self, item):
-        has_image = 'image' in item
-        has_target = 'target' in item
+        has_image = 'image' in item and bool(item['image'])
+        has_target = 'target' in item and bool(item['target']) and any(bool(elem) for elem in item['target'].values())
         has_target_boxes = 'boxes' in item['target'] if has_target else False
         raw_conv: List[Dict[str, Any]] = item['conversations']
 

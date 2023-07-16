@@ -15,3 +15,8 @@ matplotlib
 
 accelerate
 SentencePiece
+
+gradio
+fastapi
+uvicorn
+bitsandbytes

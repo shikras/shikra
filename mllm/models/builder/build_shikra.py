@@ -14,10 +14,11 @@ DEFAULT_BOS_TOKEN = "<s>"
 DEFAULT_UNK_TOKEN = "<unk>"
 
 
-def load_pretrained_shikra(model_args, training_args) -> Tuple[nn.Module, PREPROCESSOR]:
+def load_pretrained_shikra(model_args, training_args, **kwargs) -> Tuple[nn.Module, PREPROCESSOR]:
     model = ShikraLlamaForCausalLM.from_pretrained(
         model_args.model_name_or_path,
         cache_dir=model_args.cache_dir,
+        **kwargs
     )
     model.config.use_cache = False
     if model_args.freeze_backbone:
@@ -58,7 +59,13 @@ def load_pretrained_shikra(model_args, training_args) -> Tuple[nn.Module, PREPRO
         dtype = torch.float16
     if training_args.bf16:
         dtype = torch.bfloat16
-    model.model.vision_tower[0].to(dtype=dtype, device=training_args.device)
+    # HACK for quantization
+    if model.model.vision_tower[0].device != torch.device('meta'):
+        model.model.vision_tower[0].to(dtype=dtype, device=training_args.device)
+    else:
+        from transformers import CLIPVisionModel
+        model.model.vision_tower[0] = CLIPVisionModel.from_pretrained(model_args.vision_tower)  # not quantize clip
+        # model.model.vision_tower[0] = CLIPVisionModel.from_pretrained(model_args.vision_tower, **kwargs)  # quantize clip、
     vision_config = model_vision_dict['vision_config']
 
     model.config.tune_mm_mlp_adapter = model_args.tune_mm_mlp_adapter

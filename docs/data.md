@@ -36,3 +36,21 @@ flickr=dict(
     ),
 ```
 
+ if you are working with the **pope** test set in `config/_base_/dataset/DEFAULT_TEST_POPE_VARIANT.py`, you can update the `image_folder` field as follows:
+
+```python
+POPE_TEST_COMMON_CFG = dict(
+    type='POPEVQADataset',
+    image_folder=r'openmmlab1424:s3://openmmlab/datasets/detection/coco/val2014',
+)
+```
+
+to
+
+```python
+POPE_TEST_COMMON_CFG = dict(
+    type='POPEVQADataset',
+    image_folder=r'path/to/coco/val2014/on/your/computer',
+)
+```
+
