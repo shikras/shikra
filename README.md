@@ -25,9 +25,9 @@
 ## Contents
 
 - [Install](#install)
-- [Checkpoint](#Checkpoint)
+- [Checkpoint](#checkpoint)
 - [Dataset](https://github.com/shikras/shikra/blob/main/docs/data.md)
-- [Demo](#Demo)
+- [Demo](#demo)
 
 ## Install
 
