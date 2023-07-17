@@ -5,6 +5,7 @@
   <p align="center">
     <a href='https://github.com/shikras/shikra'><img src='https://img.shields.io/badge/Project-Page-Green'></a>
     <a href='http://arxiv.org/abs/2306.15195'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+    <a href='http://demo.zhaozhang.net:7860'><img src='https://img.shields.io/badge/Online-Demo-green'></a>
   </p>
 </p>
 
@@ -15,9 +16,9 @@
 <p align="center"><img src="./assets/teaser.jpg" alt="teaser" width="300px" /></p>
 
 ## News
-[07/16] We released the shikra demo. You can access [our online demo]() or [deploy it locally](#Demo).
+[07/16] We released the shikra demo. You can access [our online demo](http://demo.zhaozhang.net:7860/) or deploy it locally.
 
-[07/03] We released the code, data and shikra-7b checkpoint.
+[07/03] We released the code, [data](https://github.com/shikras/shikra/blob/main/docs/data.md) and shikra-7b checkpoint.
 
 [06/28] We released **Shikra: Unleashing Multimodal LLM’s Referential Dialogue Magic**, which is designed to kick off **referential dialogue**. Checkout the [paper](https://arxiv.org/abs/2306.15195).
 
