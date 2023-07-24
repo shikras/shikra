@@ -1,6 +1,6 @@
 ## Data
 
-You can access all the data we utilize by downloading the ZIP file provided [here](https://drive.google.com/file/d/1CNLu1zJKPtliQEYCZlZ8ykH00ppInnyN/view?usp=drive_link). This compressed file **exclusively contains the annotations in jsonl** format. Once you extract this ZIP file, please ensure that you place it under the `data` folder. After extraction, the directory structure should appear as follows:
+You can access all the data we utilize by downloading the ZIP file from [Google Driver](https://drive.google.com/file/d/1CNLu1zJKPtliQEYCZlZ8ykH00ppInnyN/view?usp=drive_link) or [Baidu Netdisk](https://pan.baidu.com/s/1qGTIqgJ54eijzT4-XJJIyg?pwd=9ri4). This compressed file **exclusively contains the annotations in jsonl** format. Once you extract this ZIP file, please ensure that you place it under the `data` folder. After extraction, the directory structure should appear as follows:
 
 ```
 |- config
